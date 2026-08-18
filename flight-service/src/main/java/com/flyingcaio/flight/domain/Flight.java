@@ -56,6 +56,26 @@ public class Flight {
             LocalDateTime departureTime,
             LocalDateTime arrivalTime) {
 
+        if (flightNumber == null || flightNumber.isBlank()) {
+            throw new IllegalArgumentException("Flight number is required");
+        }
+
+        if (origin == null || origin.isBlank()) {
+            throw new IllegalArgumentException("Origin is required");
+        }
+
+        if (destination == null || destination.isBlank()) {
+            throw new IllegalArgumentException("Destination is required");
+        }
+
+        if (departureTime == null) {
+            throw new IllegalArgumentException("Departure time is required");
+        }
+
+        if (arrivalTime == null) {
+            throw new IllegalArgumentException("Arrival time is required");
+        }
+
         if (origin.equalsIgnoreCase(destination)) {
             throw new IllegalArgumentException(
                     "Origin and destination must be different"
@@ -70,12 +90,12 @@ public class Flight {
 
         Flight flight = new Flight();
 
-        flight.flightNumber = flightNumber;
-        flight.origin = origin;
-        flight.destination = destination;
+        flight.flightNumber = flightNumber.toUpperCase();
+        flight.origin = origin.toUpperCase();
+        flight.destination = destination.toUpperCase();
         flight.departureTime = departureTime;
         flight.arrivalTime = arrivalTime;
-        flight.status = FlightStatus.SCHEDULE;
+        flight.status = FlightStatus.SCHEDULED;
 
         LocalDateTime now = LocalDateTime.now();
         flight.createdAt = now;

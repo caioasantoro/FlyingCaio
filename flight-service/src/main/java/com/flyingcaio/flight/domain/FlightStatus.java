@@ -1,7 +1,7 @@
 package com.flyingcaio.flight.domain;
 
 public enum FlightStatus {
-    SCHEDULE,
+    SCHEDULED,
     BOARDING,
     DEPARTED,
     ARRIVED,
